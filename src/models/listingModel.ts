@@ -11,5 +11,5 @@ export type TData = {
 }
 
 export type TListing = {
-	items: TData;
+	items: TData[];
 }
