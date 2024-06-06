@@ -1,7 +1,30 @@
 @import './Variables.scss';
 
-.item-details {
+.item-list {
+	box-sizing: border-box;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-wrap: wrap;
 	color: $color-black;
-	width: 100%;
+	min-width: 900px;
 	background: $color-white;
+	aspect-ratio: 9 / 18;
+}
+
+.item {
+	width: 19%;
+}
+
+.item-image {
+	width: 100%;
+}
+
+.image {
+	width: 100%;
+}
+
+.item-details {
+	
 }

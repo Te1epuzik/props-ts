@@ -1,21 +1,25 @@
 import './App.css';
 import { Listing } from './components/Listing';
+import { Films } from './components/Films';
 import { TData } from './models/listingModel';
 import dataSourse from './etsy.json';
 
 function App() {
-	const parsedData: TData = JSON.parse(JSON.stringify(dataSourse));
+	const parsedData: TData[] = JSON.parse(JSON.stringify(dataSourse));
+	// console.log(parsedData)
 
 	const data: TData[] = parsedData.map((element: TData) => {
-		const { listing_id, url, MainImage, title, currency_code, price, quantity }: TData = element;
-		return { listing_id, url, MainImage, title, currency_code, price, quantity }
+		const url_570xN: string = element.MainImage?.url_570xN;
+		const { listing_id, url, title, currency_code, price, quantity }: TData = element;
+		return { listing_id, url, MainImage: { url_570xN }, title, currency_code, price, quantity }
 	});
 
-	console.log(data);
+	// console.log(data);
 
 	return (
 		<>
-			<Listing item={data} />
+			<Films />
+			<Listing items={data} />
 		</>
 	)
 }
