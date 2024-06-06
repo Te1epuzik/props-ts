@@ -1,16 +1,31 @@
+import { FC } from 'react';
+import { TData, TListing } from '../../models/listingModel';
 import classes from './listing.module.scss';
-import { TData } from '../../models/listingModel';
-import dataSourse from './etsy.json';
 
-export const Listing = () => {
-	const data: TData = [];
 
-	JSON.parse(dataSourse).forEach(element => {
-		{ listing_id, url, MainImage, title, currency_code, price, quantity }: TData<string> = element;
-	});
+export const Listing: FC<TListing> = ({ items }) => {
+	console.log(items);
 
-	console.log(dataSourse);
 	return (
-		<div></div>
+		<>
+			{
+				items.map((item: TData) =>
+					<div className={classes['item-list']}>
+						<div className={classes['item']}>
+							<div className={classes['item-image']}>
+								<a href={item.url}>
+									<img src={item.MainImage.url_570xN} />
+								</a>
+							</div>
+							<div className={classes['item-details']}>
+								<p className={classes['item-title']}>{item.title}</p>
+								<p className={classes['item-price']}>{item.price}</p>
+								<p className={classes['item-quantity'] + ' ' + classes['level-medium']}>12 left</p>
+							</div>
+						</div>
+					</div>
+				)
+			}
+		</>
 	)
 }
